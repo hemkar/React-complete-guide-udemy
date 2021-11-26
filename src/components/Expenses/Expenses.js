@@ -12,27 +12,22 @@ function Expenses(props) {
     console.log(filteredDate);
   };
   return (
-    <Card className="expenses">
-      <ExpensesFilter
-        filteredDate={filteredDate}
-        expenseFilterHandler={handleExpenseFilter}
-      />
-      <ExpenseItem
-        title={expenseItems[0].title}
-        amount={expenseItems[0].amount}
-        date={expenseItems[0].date}
-      />
-      <ExpenseItem
-        title={expenseItems[1].title}
-        amount={expenseItems[1].amount}
-        date={expenseItems[1].date}
-      />
-      <ExpenseItem
-        title={expenseItems[2].title}
-        amount={expenseItems[2].amount}
-        date={expenseItems[2].date}
-      />
-    </Card>
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter
+          filteredDate={filteredDate}
+          expenseFilterHandler={handleExpenseFilter}
+        />
+
+        {props.expenseItems.map((expenseItem) => (
+          <ExpenseItem
+            title={expenseItem.title}
+            amount={expenseItem.amount}
+            date={expenseItem.date}
+          />
+        ))}
+      </Card>
+    </div>
   );
 }
 
