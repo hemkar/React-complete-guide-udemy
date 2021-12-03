@@ -8,7 +8,7 @@ const ExpenseForm = (props) => {
   const [showForm, SetShowForm] = useState(false);
 
   const handleShowForm = (e) => {
-    SetShowForm(true);
+    showForm ? SetShowForm(false) : SetShowForm(true);
   };
 
   if (showForm === false) {
@@ -78,6 +78,9 @@ const ExpenseForm = (props) => {
           />
         </div>
         <div className="new-expense__actions ">
+          <button type="button" onClick={handleShowForm}>
+            Cancel
+          </button>
           <button type="submit">Add Expense</button>
         </div>
       </div>
