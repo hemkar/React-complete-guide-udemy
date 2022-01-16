@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
+import ErrorModal from "../UI/ErrorModal";
 
 const AddUser = (props) => {
   const [userName, setUserName] = useState("");
@@ -29,25 +30,31 @@ const AddUser = (props) => {
     setUserAge("");
   };
   return (
-    <Card className={classes.input}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="userName">Username</label>
-        <input
-          type="text"
-          id="userName"
-          onChange={handleUserName}
-          value={userName}
-        ></input>
-        <label htmlFor="age">Age (years)</label>
-        <input
-          type="number"
-          id="age"
-          onChange={handleUserAge}
-          value={userAge}
-        ></input>
-        <Button type="submit">Add user</Button>
-      </form>
-    </Card>
+    <div>
+      <ErrorModal
+        title="An error occured!"
+        message="Something went wrong!"
+      ></ErrorModal>
+      <Card className={classes.input}>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="userName">Username</label>
+          <input
+            type="text"
+            id="userName"
+            onChange={handleUserName}
+            value={userName}
+          ></input>
+          <label htmlFor="age">Age (years)</label>
+          <input
+            type="number"
+            id="age"
+            onChange={handleUserAge}
+            value={userAge}
+          ></input>
+          <Button type="submit">Add user</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
 
